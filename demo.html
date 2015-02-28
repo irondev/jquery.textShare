@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>textShare</title> 
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+	<style type="text/css">
+	.glyphicon{font-size:15px;color:#000;}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+	
+		<div class="row">
+	
+			<div class="col-xs-12 js-content">
+				<h1>Lorem ipsum</h1>
+			</div>
+			
+			<div class="col-xs-12 col-sm-8 js-content">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget ipsum id nisi ultricies mattis a quis metus. Cras quis odio nec ex consequat fringilla. Nunc in nisi dignissim, iaculis mi sit amet, dapibus dolor. Mauris malesuada, nisl nec ultrices bibendum, ligula ex porta augue, in imperdiet enim dui bibendum lacus. In bibendum, ligula in sollicitudin tempor, tellus elit blandit magna, nec ultricies metus justo quis lorem. Morbi vulputate lectus eros, at faucibus mi blandit vitae. Nam lobortis magna vitae egestas fermentum. Cras auctor ultrices ante et euismod. Aenean sit amet mauris finibus, ornare neque et, dignissim turpis. Pellentesque eu dapibus elit. Duis id ligula non lacus interdum vestibulum ornare vitae risus. Phasellus a nisl a mi mollis consectetur. Nam commodo volutpat quam, mattis blandit neque.</p>
+				<p>Aenean ac mattis nisl. Donec molestie nisi et molestie convallis. Curabitur vitae mi malesuada lorem euismod ullamcorper et porttitor est. Donec sit amet arcu malesuada, sagittis ipsum quis, lacinia neque. Phasellus elementum eleifend tellus, eu faucibus erat interdum a. Morbi blandit condimentum tellus ac ultricies. Ut at lorem nec lectus sagittis posuere. Suspendisse eleifend dolor non sapien tempor cursus. Vivamus in arcu in elit egestas vulputate. Nam tempus purus et vulputate interdum. Vestibulum tincidunt ipsum eu magna sollicitudin commodo.</p>
+				<ul>
+					<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+					<li>Etiam vitae elit malesuada, gravida lectus quis, dignissim felis.</li>
+					<li>Donec nec sapien cursus, laoreet urna sit amet, faucibus ligula.</li>
+					<li>Nulla malesuada magna vel pellentesque ullamcorper.</li>
+				</ul>
+				<div class="well well-sm">Suspendisse potenti. Fusce congue placerat sem id maximus. Etiam efficitur nulla sapien, sit amet tincidunt nibh ornare vehicula. Aliquam cursus, leo consequat elementum cursus, elit lorem tempor lacus, at consequat felis odio in nunc. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum nisi urna, lacinia ornare nulla et, consequat vehicula neque. Maecenas justo magna, tempus vitae hendrerit sed, sollicitudin pellentesque ante. Quisque iaculis ante porttitor quam consequat, sed eleifend ligula euismod.</div>
+			</div><!-- /js-content -->
+			
+			<div class="col-xs-12 col-sm-4">
+				<ul>
+					<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+					<li>Etiam vitae elit malesuada, gravida lectus quis, dignissim felis.</li>
+					<li>Donec nec sapien cursus, laoreet urna sit amet, faucibus ligula.</li>
+					<li>Nulla malesuada magna vel pellentesque ullamcorper.</li>
+				</ul>
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="jquery.textShare.js"></script>
+	<script>
+	$(function() {
+		$(".js-content").textShare({
+			filters: 'h1, p, li',
+			minChars: 3,
+			maxChars: 140,
+			tpl: '<div class="well well-sm js-textShare"><a href="#" class="glyphicon glyphicon-share js-twitter"></a></div>',
+			onload: function(element, text) {
+				$(element).find(".js-twitter").on("click", function(e) {
+					var w = 638,
+						x = (screen.availWidth / 2) - (w / 2),
+						h = 450,
+						y = (screen.availHeight / 2) - (h / 2);
+					window.open("https://twitter.com/share?url=" + encodeURIComponent("https://github.com/irondev") + "&text=" + encodeURIComponent("«"+text+"»") + "&via=irondev", '', "width="+ w +",height="+ h +",left="+ x +",top="+ y);
+					e.preventDefault();
+				});
+			}
+		});
+	});
+	</script>
+</body>
+</html>
