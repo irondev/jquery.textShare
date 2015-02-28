@@ -2,4 +2,4 @@ textShare
 ==========
 
 ```
-Demo : https://rawgit.com/irondev/textShare/master/demo.html
+Demo : https://rawgit.com/irondev/jquery.textShare/master/demo.html
