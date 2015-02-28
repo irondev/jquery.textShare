@@ -53,7 +53,17 @@
 			filters: 'h1, p, li',
 			minChars: 3,
 			maxChars: 140,
-			tpl: '<div class="well well-sm js-textShare"><a href="#" class="glyphicon glyphicon-share js-twitter"></a></div>'
+			tpl: '<div class="well well-sm js-textShare"><a href="#" class="glyphicon glyphicon-share js-twitter"></a></div>',
+			onload: function(element, text) {
+				$(element).find(".js-twitter").on("click", function(e) {
+					var w = 638,
+						x = (screen.availWidth / 2) - (w / 2),
+						h = 450,
+						y = (screen.availHeight / 2) - (h / 2);
+					window.open("https://twitter.com/share?url=" + encodeURIComponent("https://github.com/irondev") + "&text=" + encodeURIComponent("«"+text+"»") + "&via=irondev", '', "width="+ w +",height="+ h +",left="+ x +",top="+ y);
+					e.preventDefault();
+				});
+			}
 		});
 	});
 	</script>
