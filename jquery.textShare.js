@@ -19,12 +19,12 @@ $(function() {
 ;(function ( $, window, document, undefined ) {
     var pluginName = "textShare",
         defaults = {
-        	filters: '*',
+            filters: '*',
             minChars: false,
-        	maxChars: false,
+            maxChars: false,
             tpl: '<div class="js-textShare"></div>',
-			onload: function() {}
-        };		
+            onload: function() {}
+        };
 
     function Plugin( element, options ) {
         this.element = element;
@@ -37,12 +37,12 @@ $(function() {
     $.extend(Plugin.prototype, {
 
         init: function() {
-			this.$element = $(this.element);
-			if (typeof window.getSelection != "undefined")
+            this.$element = $(this.element);
+            if (typeof window.getSelection != "undefined")
                 this.setEvents();
-		},
+        },
 
-		setEvents: function() {
+        setEvents: function() {
             this.$element.on("mouseup", $.proxy(function (e) {
                 setTimeout($.proxy(function() {
                     var _this = this;
@@ -57,15 +57,15 @@ $(function() {
                         if ($target.filter(this.settings.filters).length && text && (!this.settings.minChars || text.length > this.settings.minChars) && (!this.settings.maxChars || text.length < this.settings.maxChars)) {
                             sRange = sel.getRangeAt(0);
                             sPos = sRange.getBoundingClientRect();
-							$target.after(this.settings.tpl);
-							var $textShare = $target.next(".js-textShare");
+                            $target.after(this.settings.tpl);
+                            var $textShare = $target.next(".js-textShare");
                             $textShare.css({position:'fixed', zIndex:1000, top:sPos.top +'px', marginTop:sPos.height +'px', left:sPos.left +'px'});
                             var marginLeft = sPos.width / 2 - $textShare.outerWidth() / 2;
                             var lineHeight = isNaN(parseInt($target.css("lineHeight"))) ? $target.height() : parseInt($target.css("lineHeight"));
                             if (sPos.height > lineHeight + 2)
                                 marginLeft = 0;
                             $textShare.css({marginLeft: marginLeft});
-							this.settings.onload($textShare, text);
+                            this.settings.onload($textShare, text);
                         }
                     }
                 }, this), 10);
@@ -79,8 +79,7 @@ $(function() {
                 if ($(".js-textShare").length)
                     $(".js-textShare").remove();
             });
-		}
-		
+        }
     });
 
     $.fn[pluginName] = function ( options ) {
